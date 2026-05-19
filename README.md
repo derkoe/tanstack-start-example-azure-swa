@@ -5,8 +5,8 @@ Welcome to your new TanStack Start app!
 To run this application:
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 # Building For Production
@@ -39,26 +39,21 @@ If you prefer not to use Tailwind CSS:
 4. Uninstall the packages: `npm install @tailwindcss/vite tailwindcss -D`
 
 
-## Deploy with Nitro
+## Deploy to Azure Static Web Apps
 
-This project uses Nitro as a generic server adapter, so it can run on any Node-compatible host.
+This project uses Nitro as a generic server adapter with special configuration for Azure Static Web Apps. To deploy to Azure Static Web Apps, run the following command:
 
 ```bash
-npm run build
-node dist/server/index.mjs
+pnpm run build
+pnpm dlx @azure/static-web-apps-cli deploy .output/public --api-location .output/server --api-language node --api-version 22
 ```
-
-The build output is a self-contained Node server. To deploy, push the `dist/` directory to your host (Render, Fly.io, your own VPS, etc.) and run the server command above.
-
-For host-specific presets (Vercel, Netlify, Cloudflare, AWS Lambda, etc.) and tuning, see https://v3.nitro.build/deploy.
-
 
 ## Setting up Better Auth
 
 1. Generate and set the `BETTER_AUTH_SECRET` environment variable in your `.env.local`:
 
    ```bash
-   npx -y @better-auth/cli secret
+   pnpm dlx @better-auth/cli secret
    ```
 
 2. Visit the [Better Auth documentation](https://www.better-auth.com) to unlock the full potential of authentication in your app.
@@ -85,8 +80,6 @@ Then run migrations:
 ```bash
 npx -y @better-auth/cli migrate
 ```
-
-
 
 ## Routing
 
